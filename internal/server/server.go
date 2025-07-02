@@ -28,6 +28,7 @@ func (s *Server) Start() error {
 	// Register collectors
 	prometheus.MustRegister(collector.NewPowermetricsCollector())
 	prometheus.MustRegister(collector.NewVmStatCollector())
+	prometheus.MustRegister(collector.NewMacMonCollector())
 
 	http.Handle("/metrics", promhttp.Handler())
 	log.Printf("Beginning to serve on port %s", s.config.Port)
